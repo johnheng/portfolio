@@ -129,6 +129,9 @@ a:active {
     background: #fff;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.09);
   }
+  .site-header.no-shadow {
+    box-shadow: none;
+  }
   .site-header,
   .hamburger-menu {
     display: flex;
@@ -147,19 +150,8 @@ a:active {
   .main-menu li {
     position: relative;
   }
-  .main-menu li::after {
-    content: "";
-    position: absolute;
-    top: 11px;
-    right: 0;
-    font-family: fontawesome, serif;
-  }
-  .main-menu li:hover::after,
-  .main-menu li.current-menu-item::after {
-    color: #f0437e;
-  }
   .site-navigation {
-    position: absolute;
+    position: fixed;
     top: 78px;
     left: 0;
     z-index: 99;
@@ -347,16 +339,6 @@ a:active {
 .breadcrumbs li:nth-of-type(1) {
   padding-left: 0;
 }
-.breadcrumbs li::after {
-  content: "/";
-  position: absolute;
-  top: 0;
-  right: -6px;
-  width: 10px;
-}
-.breadcrumbs li:nth-last-of-type(1)::after {
-  display: none;
-}
 .breadcrumbs li a {
   color: #191919;
   text-decoration: none;
@@ -523,12 +505,6 @@ a:active {
   margin-right: 20px;
   color: #bfbfbf;
   font-size: 0.875rem;
-}
-.blog-page .blog-content .posted-on::after {
-  content: "/";
-  position: absolute;
-  top: 0;
-  right: -14px;
 }
 .blog-page .blog-content footer ul {
   padding: 0;

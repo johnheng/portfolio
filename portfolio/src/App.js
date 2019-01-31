@@ -61,7 +61,7 @@ class App extends Component {
           >
             <h1 className="site-title">
               <a href="index.html" rel="home">
-                <img style={{ width: "100%" }} src={me} alt="Logo" />
+                <img className="logo" src={me} alt="Logo" />
               </a>
             </h1>
           </div>
