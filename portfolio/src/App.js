@@ -11,10 +11,16 @@ import "whatwg-fetch";
 var XMLParser = require("react-xml-parser");
 
 class App extends Component {
-  state = {
-    photos: [],
-    isLoading: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      photos: [],
+      isLoading: false,
+      menuOpen: false
+    };
+
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
 
   s3Url = "http://johnhengphotography.s3.amazonaws.com/";
 
@@ -38,18 +44,31 @@ class App extends Component {
     });
   }
 
+  toggleMenu() {
+    this.setState(state => ({
+      menuOpen: !state.menuOpen
+    }));
+  }
+
   render() {
     return (
       <div>
-        <header className="site-header">
-          <div className="site-branding">
+        <header
+          className={"site-header " + (this.state.menuOpen ? "no-shadow" : "")}
+        >
+          <div
+            className={"site-branding " + (this.state.menuOpen ? "hide" : "")}
+          >
             <h1 className="site-title">
               <a href="index.html" rel="home">
                 <img style={{ width: "100%" }} src={me} alt="Logo" />
               </a>
             </h1>
           </div>
-          <div className="hamburger-menu">
+          <div
+            className={"hamburger-menu " + (this.state.menuOpen ? "close" : "")}
+            onClick={this.toggleMenu}
+          >
             <div className="menu-icon">
               <img src={hamberder} alt="menu icon" />
             </div>
@@ -58,7 +77,12 @@ class App extends Component {
             </div>
           </div>
         </header>
-        <nav className="site-navigation flex flex-column justify-content-between">
+        <nav
+          className={
+            "site-navigation flex flex-column justify-content-between " +
+            (this.state.menuOpen ? "show" : "")
+          }
+        >
           <div className="site-branding d-none d-lg-block hide">
             <h1 className="site-title">
               <a href="index.html" rel="home">
