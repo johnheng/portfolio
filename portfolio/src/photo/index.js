@@ -17,7 +17,7 @@ const PhotoItem = props => {
     <div className="grid-item">
       <div className="portfolio-content">
         <figure>
-          <div />
+          <img src={props.photo.url} alt={props.photo.title} />
         </figure>
         <div className="entry-content flex flex-column align-items-center justify-content-center">
           <h3>

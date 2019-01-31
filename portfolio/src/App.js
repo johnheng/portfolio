@@ -16,28 +16,26 @@ class App extends Component {
     isLoading: false
   };
 
+  s3Url = "http://johnhengphotography.s3.amazonaws.com/";
+
   componentDidMount() {
     this.setState({ photos: [], isFetching: true });
-    fetch(`http://johnhengphotography.s3.amazonaws.com/?list-type=2`).then(
-      response => {
-        let self = this;
-        response.text().then(function(d) {
-          var json = new XMLParser().parseFromString(d);
-          var photos = json.children
-            .filter(x => x.name === "Contents")
-            .map(x => {
-              console.log(x);
-              return {
-                url: x.children.find(n => n.name === "Key").value,
-                title: x.children.find(n => n.name === "Key").value,
-                tags: []
-              };
-            });
-          console.log(photos);
-          self.setState({ photos: photos, isFetching: false });
-        });
-      }
-    );
+    fetch(this.s3Url).then(response => {
+      let self = this;
+      response.text().then(function(d) {
+        var json = new XMLParser().parseFromString(d);
+        var photos = json.children
+          .filter(x => x.name === "Contents")
+          .map(x => {
+            return {
+              url: self.s3Url + x.children.find(n => n.name === "Key").value,
+              title: x.children.find(n => n.name === "Key").value,
+              tags: []
+            };
+          });
+        self.setState({ photos: photos, isFetching: false });
+      });
+    });
   }
 
   render() {
