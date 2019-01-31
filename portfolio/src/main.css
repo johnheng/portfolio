@@ -30,8 +30,11 @@ section {
 }
 
 .grid {
-  display: grid;
-  grid-auto-flow: row dense;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
+  width: 100%;
+  column-count: 3;
+  column-gap: 5px;
+}
+
+.grid .grid-item {
+  margin-bottom: 5px;
 }
