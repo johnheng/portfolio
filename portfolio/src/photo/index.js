@@ -13,7 +13,6 @@ const PhotoSeries = props => {
   );
 };
 const PhotoItem = props => {
-  console.log(props);
   return (
     <div className="grid-item">
       <div className="portfolio-content">
@@ -22,12 +21,12 @@ const PhotoItem = props => {
         </figure>
         <div className="entry-content flex flex-column align-items-center justify-content-center">
           <h3>
-            <a href="#">{props.photo.title}</a>
+            <a href={"#" + props.photo.title}>{props.photo.title}</a>
           </h3>
           <ul className="flex flex-wrap justify-content-center">
             {props.photo.tags.map((tag, i) => (
               <li key={i}>
-                <a href="#">{tag}</a>
+                <a href={"#" + tag}>{tag}</a>
               </li>
             ))}
           </ul>

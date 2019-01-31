@@ -30,7 +30,6 @@ class App extends Component {
   componentDidMount() {}
 
   render() {
-    const { photos, isLoading } = this.state;
     return (
       <div>
         <header className="site-header">
@@ -60,7 +59,7 @@ class App extends Component {
           </div>
           <ul className="main-menu flex flex-column justify-content-center">
             <li className="current-menu-item">
-              <a href="#">Everything</a>
+              <a href="#everything">Everything</a>
             </li>
             <li>
               <a href="#people">People</a>
