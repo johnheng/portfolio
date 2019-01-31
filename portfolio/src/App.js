@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import "./App.css";
 import "./assets/bootstrap.min.css";
 import "./assets/fontawesome.min.css";
 import "./assets/style.css";
@@ -7,23 +6,38 @@ import "./main.css";
 import x from "./assets/x.png";
 import hamberder from "./assets/menu-icon.png";
 import me from "./assets/me.jpg";
-
-
-var style = {
-  width:'295px', height: '295px', backgroundColor:"#e5e5e5"
-};
+import PhotoSeries from "./photo";
 
 class App extends Component {
-  
+  state = {
+    photos: [
+      { url: "asdf", title: "Picture 1", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 2", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 3", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
+      { url: "asdf", title: "Picture 5", tags: ["asdf", "fda"] }
+    ],
+    isLoading: false
+  };
+
+  componentDidMount() {}
 
   render() {
+    const { photos, isLoading } = this.state;
     return (
       <div>
         <header className="site-header">
           <div className="site-branding">
             <h1 className="site-title">
               <a href="index.html" rel="home">
-                <img style={{width:"100%"}} src={me} alt="Logo" />
+                <img style={{ width: "100%" }} src={me} alt="Logo" />
               </a>
             </h1>
           </div>
@@ -59,150 +73,7 @@ class App extends Component {
             </li>
           </ul>
         </nav>
-        <section>
-          <div className="grid">
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="portfolio-content">
-                <figure>
-                  <div style={style} />
-                </figure>
-                <div className="entry-content flex flex-column align-items-center justify-content-center">
-                  <h3>
-                    <a href="#">Flower Skin</a>
-                  </h3>
-                  <ul className="flex flex-wrap justify-content-center">
-                    <li>
-                      <a href="#">Portfolio,</a>
-                    </li>
-                    <li>
-                      <a href="#">Tree</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PhotoSeries list={this.state.photos} />
       </div>
     );
   }
