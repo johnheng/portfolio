@@ -7,27 +7,38 @@ import x from "./assets/x.png";
 import hamberder from "./assets/menu-icon.png";
 import me from "./assets/me.jpg";
 import PhotoSeries from "./photo";
+import "whatwg-fetch";
+var XMLParser = require("react-xml-parser");
 
 class App extends Component {
   state = {
-    photos: [
-      { url: "asdf", title: "Picture 1", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 2", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 3", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 4", tags: ["asdf", "fda"] },
-      { url: "asdf", title: "Picture 5", tags: ["asdf", "fda"] }
-    ],
+    photos: [],
     isLoading: false
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({ photos: [], isFetching: true });
+    fetch(`http://johnhengphotography.s3.amazonaws.com/?list-type=2`).then(
+      response => {
+        let self = this;
+        response.text().then(function(d) {
+          var json = new XMLParser().parseFromString(d);
+          var photos = json.children
+            .filter(x => x.name === "Contents")
+            .map(x => {
+              console.log(x);
+              return {
+                url: x.children.find(n => n.name === "Key").value,
+                title: x.children.find(n => n.name === "Key").value,
+                tags: []
+              };
+            });
+          console.log(photos);
+          self.setState({ photos: photos, isFetching: false });
+        });
+      }
+    );
+  }
 
   render() {
     return (
