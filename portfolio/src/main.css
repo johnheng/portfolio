@@ -25,6 +25,10 @@
   width: 100% !important;
 }
 
+img {
+  transition: opacity 1s ease-out;
+}
+
 section {
   margin-left: 80px;
 }
@@ -33,6 +37,7 @@ section {
   width: 100%;
   column-count: 3;
   column-gap: 5px;
+  column-fill: balance;
 }
 
 .grid .grid-item {
